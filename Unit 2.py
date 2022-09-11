@@ -33,5 +33,27 @@
 # print(guess)
 # print(num_guesses)
 
-#The program works as follows: you (the user) thinks of an integer between 0 (inclusive) and 100 (not inclusive). 
-# The computer makes guesses, and you give it input - is its guess too high or too low? Using bisection search, the computer will guess the user's secret number!
+#converts decimal to binary format
+# num = 11
+# result = ''
+# if num < 0:
+#     isNeg = True
+#     num = abs(num)
+# else:
+#     isNeg = False
+# while num > 0:
+#     result = str(num%2) + result
+#     num = num//2 
+#print(result)
+
+#newton-raphson algorithm
+epsilon = 0.01 
+y = 54.0
+guess = y/2.0
+numGuesses = 0
+while abs(guess*guess) >= epsilon:
+    numGuesses += 1
+    guess = guess - (((guess**2)-y)/(2*guess))
+print(numGuesses)
+print(y)
+print(guess)
