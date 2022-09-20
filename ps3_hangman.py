@@ -50,8 +50,36 @@ def isWordGuessed(secretWord, lettersGuessed):
     returns: boolean, True if all the letters of secretWord are in lettersGuessed;
       False otherwise
     '''
-    # FILL IN YOUR CODE HERE...
-
+    iter = 0
+    wordCount = 0
+    for s in range(len(lettersGuessed)):
+      if lettersGuessed[s] in secretWord:
+        wordCount += 1
+        if secretWord.index(lettersGuessed[s]) == secretWord.index(secretWord[lettersGuessed[s]]+1):
+          wordCount += 1
+      if lettersGuessed[s] not in secretWord:
+        iter += 1
+    if wordCount == len(secretWord):
+      print(True)
+    if len(lettersGuessed) < len(secretWord):
+      print(False)
+    else:
+      print(False)
+    # while True:
+    #   if len(lettersGuessed) < len(secretWord):
+    #     print(False)
+    #     break
+    #   elif (lettersGuessed[x]) in secretWord:
+    #     wordCount += 1
+    #     if wordCount == len(secretWord):
+    #       print(True)
+    #       break
+    #   elif (lettersGuessed[x]) not in secretWord:
+    #     iter += 1
+    #     if iter + wordCount == len(lettersGuessed):
+    #       print(False)
+    #       break
+isWordGuessed("brocolli",['r','f','p','c','u','l','o','i','m','b'])
 
 
 def getGuessedWord(secretWord, lettersGuessed):
