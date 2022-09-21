@@ -76,9 +76,27 @@ def getGuessedWord(secretWord, lettersGuessed):
     returns: string, comprised of letters and underscores that represents
       what letters in secretWord have been guessed so far.
     '''
-    # FILL IN YOUR CODE HERE...
-
-
+    secretWord2 = secretWord
+    for s in range(len(secretWord)):
+      if secretWord[s] not in lettersGuessed:
+        secretWord2 = secretWord2.replace(secretWord[s], "_")
+    return secretWord2
+#     secretWord = secretWord.lower()
+#     status = ""
+#     count = []
+#     for s in range(len(secretWord)):
+#       count.append("_ ")
+#     for s in range(len(lettersGuessed)):
+#       if lettersGuessed[s] in count:
+#         count[spot + 1] = lettersGuessed[s]
+#         s += 1
+#       elif lettersGuessed[s] in secretWord:
+#         spot = secretWord.index(lettersGuessed[s])
+#         count[spot] = lettersGuessed[s]
+#     for x in range(len(count)):
+#       status += count[x]
+#     return status
+print(getGuessedWord("hello", []))
 
 def getAvailableLetters(lettersGuessed):
     '''
