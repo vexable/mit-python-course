@@ -81,30 +81,17 @@ def getGuessedWord(secretWord, lettersGuessed):
       if secretWord[s] not in lettersGuessed:
         secretWord2 = secretWord2.replace(secretWord[s], "_")
     return secretWord2
-#     secretWord = secretWord.lower()
-#     status = ""
-#     count = []
-#     for s in range(len(secretWord)):
-#       count.append("_ ")
-#     for s in range(len(lettersGuessed)):
-#       if lettersGuessed[s] in count:
-#         count[spot + 1] = lettersGuessed[s]
-#         s += 1
-#       elif lettersGuessed[s] in secretWord:
-#         spot = secretWord.index(lettersGuessed[s])
-#         count[spot] = lettersGuessed[s]
-#     for x in range(len(count)):
-#       status += count[x]
-#     return status
-print(getGuessedWord("hello", []))
 
-def getAvailableLetters(lettersGuessed):
+def getAvailableLetters(lettersGuessed = ''):
     '''
     lettersGuessed: list, what letters have been guessed so far
     returns: string, comprised of letters that represents what letters have not
       yet been guessed.
     '''
-    # FILL IN YOUR CODE HERE...
+    availableLetters = "abcdefghijklmnopqrstuvwxyz"
+    for s in range(len(lettersGuessed)):
+      availableLetters = availableLetters.replace(lettersGuessed[s], "")
+    return availableLetters
     
 
 def hangman(secretWord):
@@ -127,7 +114,35 @@ def hangman(secretWord):
 
     Follows the other limitations detailed in the problem write-up.
     '''
-    # FILL IN YOUR CODE HERE...
+    availableLetters = "abcdefghijklmnopqrstuvwxyz"
+    guesses = 8
+    x = ""
+    array = []
+    print("Welcome to the game Hangman!")
+    print("I'm thinking of a word that is " + str(len(secretWord)) + " letters long.")
+    while guesses > 0:
+      availableLetters = availableLetters.replace(x,"")
+      print("-----------")
+      print("You have " + str(guesses) + " guesses left.")
+      print("Available letters: " + availableLetters)
+      x = input("Please guess a letter: ")
+      if x in array:
+        print("Oops! You've already guessed that letter: " + getGuessedWord(secretWord, array))
+        continue
+      array.append(x)
+      if x in secretWord :
+        print("Good guess: " + getGuessedWord(secretWord, array))
+      else:
+        print("Oops! That letter is not in my word: " + getGuessedWord(secretWord, array))
+        guesses -= 1
+      if "_" not in getGuessedWord(secretWord, array):
+        print("-----------")
+        return print("Congratulations, you won!")
+      elif guesses == 0:
+        print("-----------")
+        return print("Sorry, you ran out of guesses. The word was " + secretWord + ".")
+
+hangman("sea")
 
 
 
