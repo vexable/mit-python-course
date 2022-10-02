@@ -15,7 +15,7 @@ SCRABBLE_LETTER_VALUES = {
 # Helper code
 # (you don't need to understand this helper code)
 
-WORDLIST_FILENAME = "words.txt"
+WORDLIST_FILENAME = "C:/Users/prane/OneDrive/Documents/Python Course/Problem Set 4/words.txt"
 
 def loadWords():
     """
@@ -71,7 +71,12 @@ def getWordScore(word, n):
     n: integer (HAND_SIZE; i.e., hand size required for additional points)
     returns: int >= 0
     """
-    # TO DO ... <-- Remove this comment when you code this function
+    score = 0
+    if n == len(word):
+        score += 50
+    for s in word:
+        score += SCRABBLE_LETTER_VALUES[s] * len(word)
+    return score
 
 
 
