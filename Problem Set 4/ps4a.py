@@ -147,8 +147,11 @@ def updateHand(hand, word):
     hand: dictionary (string -> int)    
     returns: dictionary (string -> int)
     """
-    # TO DO ... <-- Remove this comment when you code this function
-
+    nict = hand.copy()
+    for x in word:
+        nict[x] -= 1
+    return nict
+print(updateHand({'a': 1, 'm': 1, 'i': 1, 'l': 2, 'u': 1, 'q': 1}, 'quail'))
 
 
 #
