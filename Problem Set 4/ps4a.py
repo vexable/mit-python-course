@@ -16,7 +16,6 @@ SCRABBLE_LETTER_VALUES = {
 # (you don't need to understand this helper code)
 
 WORDLIST_FILENAME = "C:/Users/prane/OneDrive/Documents/Python Course/Problem Set 4/words.txt"
-
 def loadWords():
     """
     Returns a list of valid words. Words are strings of lowercase letters.
@@ -33,6 +32,10 @@ def loadWords():
         wordList.append(line.strip().lower())
     print("  ", len(wordList), "words loaded.")
     return wordList
+inFile = open(WORDLIST_FILENAME, 'r')
+wordList = []
+for line in inFile:
+    wordList.append(line.strip().lower())
 
 def getFrequencyDict(sequence):
     """
@@ -151,7 +154,6 @@ def updateHand(hand, word):
     for x in word:
         nict[x] -= 1
     return nict
-print(updateHand({'a': 1, 'm': 1, 'i': 1, 'l': 2, 'u': 1, 'q': 1}, 'quail'))
 
 
 #
@@ -168,9 +170,16 @@ def isValidWord(word, hand, wordList):
     hand: dictionary (string -> int)
     wordList: list of lowercase strings
     """
-    # TO DO ... <-- Remove this comment when you code this function
-
-
+    hand2 = hand.copy()
+    for s in word:
+        if s not in hand:
+            return False
+        if hand2[s] < word.count(s):
+                return False
+    if word not in wordList:
+        return False
+    return True
+print(isValidWord("pear", {'p': 2, 'e': 1, 'r': 1, 'q': 1, 'b': 1, 'a': 1, 'i': 1}, wordList))
 #
 # Problem #4: Playing a hand
 #
