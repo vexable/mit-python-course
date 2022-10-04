@@ -179,7 +179,6 @@ def isValidWord(word, hand, wordList):
     if word not in wordList:
         return False
     return True
-print(isValidWord("pear", {'p': 2, 'e': 1, 'r': 1, 'q': 1, 'b': 1, 'a': 1, 'i': 1}, wordList))
 #
 # Problem #4: Playing a hand
 #
@@ -191,7 +190,11 @@ def calculateHandlen(hand):
     hand: dictionary (string-> int)
     returns: integer
     """
-    # TO DO... <-- Remove this comment when you code this function
+    hand2 = hand.keys()
+    count = 0
+    for s in hand2:
+        count += hand[s]
+    return count
 
 
 
