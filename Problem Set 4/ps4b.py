@@ -142,8 +142,8 @@ def playGame(wordList):
         if user == 'e':
             break
         elif user == 'n':
+            hand = dealHand(HAND_SIZE)
             while True:
-                hand = dealHand(HAND_SIZE)
                 choose = input("Enter u to have yourself play, c to have the computer play: ")
                 if choose == "u":
                     count += 1
@@ -151,10 +151,11 @@ def playGame(wordList):
                     previousHand = hand
                     break
                 elif choose == 'c':
+                    count += 1
                     compPlayHand(hand, wordList, HAND_SIZE)
                     break
                 else:
-                    print("Invalid Command") 
+                    print("Invalid command.") 
         elif user == "r": 
             if count >= 1:
                 while True:
@@ -164,10 +165,11 @@ def playGame(wordList):
                         playHand(previousHand, wordList, HAND_SIZE)
                         break
                     elif choose == 'c':
+                        count += 1
                         compPlayHand(previousHand, wordList, HAND_SIZE)
                         break
                     else:
-                        print("Invalid Command")
+                        print("Invalid command.")
             elif count == 0:
                 print("You have not played a hand yet. Please play a new hand first!")
                 continue
